@@ -1,0 +1,54 @@
+
+{
+	"buildFiles" : [ "F:/workspace/project/update/update/tempAlgorithm/CMakeLists.txt" ],
+	"cleanCommands" : 
+	[
+		"F:\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\workspace\\project\\update\\update\\tempAlgorithm\\.cxx\\cmake\\debug\\armeabi-v7a --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"libtempalg1_0-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "libtempalg1_0",
+			"buildType" : "debug",
+			"output" : "F:/workspace/project/update/update/tempAlgorithm/libs/armeabi-v7a/libtempalg1_0.so",
+			"toolchain" : "3063429209"
+		},
+		"libtempalg1_5-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "libtempalg1_5",
+			"buildType" : "debug",
+			"output" : "F:/workspace/project/update/update/tempAlgorithm/libs/armeabi-v7a/libtempalg1_5.so",
+			"toolchain" : "3063429209"
+		},
+		"tempalgorithm-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "tempalgorithm",
+			"buildCommand" : "F:\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\workspace\\project\\update\\update\\tempAlgorithm\\.cxx\\cmake\\debug\\armeabi-v7a --target tempalgorithm",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi --gcc-toolchain=F:/sdk/android-ndk-r15c/toolchains/arm-linux-androideabi-4.9/prebuilt/windows-x86_64 --sysroot=F:/sdk/android-ndk-r15c/sysroot  -Dtempalgorithm_EXPORTS -I..\\..\\..\\..\\libs\\include -isystem F:\\sdk\\android-ndk-r15c\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include -isystem F:\\sdk\\android-ndk-r15c\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\libs\\armeabi-v7a\\include -isystem F:\\sdk\\android-ndk-r15c\\sources\\cxx-stl\\gnu-libstdc++\\4.9\\include\\backward  -isystem F:/sdk/android-ndk-r15c/sysroot/usr/include/arm-linux-androideabi -D__ANDROID_API__=14 -g -DANDROID -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -march=armv7-a -mfloat-abi=softfp -mfpu=vfpv3-d16 -fno-integrated-as -mthumb -Wa,--noexecstack -Wformat -Werror=format-security   -std=gnu++11 -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "F:/workspace/project/update/update/tempAlgorithm/src/main/cpp/JniHelper.cpp",
+					"workingDirectory" : "F:/workspace/project/update/update/tempAlgorithm/.cxx/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "F:/workspace/project/update/update/tempAlgorithm/build/intermediates/cmake/debug/obj/armeabi-v7a/libtempalgorithm.so",
+			"toolchain" : "3063429209"
+		}
+	},
+	"toolchains" : 
+	{
+		"3063429209" : 
+		{
+			"cCompilerExecutable" : "F:/sdk/android-ndk-r15c/toolchains/llvm/prebuilt/windows-x86_64/bin/clang.exe",
+			"cppCompilerExecutable" : "F:/sdk/android-ndk-r15c/toolchains/llvm/prebuilt/windows-x86_64/bin/clang++.exe"
+		}
+	}
+}

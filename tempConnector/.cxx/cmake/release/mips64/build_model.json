@@ -1,0 +1,83 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "F:\\workspace\\project\\update\\update",
+      "sdkFolder": "F:\\sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "F:\\workspace\\project\\update\\update\\tempConnector\\build\\intermediates",
+      "gradleModulePathName": ":tempConnector",
+      "moduleRootFolder": "F:\\workspace\\project\\update\\update\\tempConnector",
+      "makeFile": "F:\\workspace\\project\\update\\update\\tempConnector\\src\\main\\cpp\\CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "F:\\workspace\\project\\update\\update\\.cxx",
+      "cxxFolder": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx",
+      "ndkFolder": "F:\\sdk\\android-ndk-r15c",
+      "ndkVersion": "15.2.4203891",
+      "ndkSupportedAbiList": [
+        "ARMEABI",
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "MIPS",
+        "MIPS64",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI",
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "MIPS",
+        "MIPS64",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [
+      "-DANDROID_PLATFORM\u003dandroid-14",
+      "-DANDROID_TOOLCHAIN\u003dclang",
+      "-DANDROID_STL\u003dgnustl_static"
+    ],
+    "cFlagList": [],
+    "cppFlagsList": [],
+    "variantName": "release",
+    "soFolder": "F:\\workspace\\project\\update\\update\\tempConnector\\build\\intermediates\\cmake\\release\\lib",
+    "objFolder": "F:\\workspace\\project\\update\\update\\tempConnector\\build\\intermediates\\cmake\\release\\obj",
+    "jsonFolder": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\release",
+    "gradleBuildOutputFolder": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cxx\\release",
+    "isDebuggableEnabled": false,
+    "validAbiList": [
+      "ARMEABI",
+      "ARMEABI_V7A",
+      "ARM64_V8A",
+      "X86",
+      "X86_64",
+      "MIPS",
+      "MIPS64"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "MIPS64",
+  "abiPlatformVersion": 21,
+  "cxxBuildFolder": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\release\\mips64",
+  "jsonFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\release\\mips64\\android_gradle_build.json",
+  "gradleBuildOutputFolder": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cxx\\release\\mips64",
+  "objFolder": "F:\\workspace\\project\\update\\update\\tempConnector\\build\\intermediates\\cmake\\release\\obj\\mips64",
+  "buildCommandFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\release\\mips64\\build_command.txt",
+  "buildOutputFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\release\\mips64\\build_output.txt",
+  "modelOutputFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\release\\mips64\\build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cxx\\release\\mips64\\CMakeLists.txt",
+    "toolchainWrapperFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cxx\\release\\mips64\\android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cxx\\release\\mips64\\build_generation_state.json",
+    "cacheKeyFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cxx\\release\\mips64\\compiler_cache_key.json",
+    "compilerCacheUseFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cxx\\release\\mips64\\compiler_cache_use.json",
+    "compilerCacheWriteFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cxx\\release\\mips64\\compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cxx\\release\\mips64\\compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\release\\mips64\\json_generation_record.json",
+  "compileCommandsJsonFile": "F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\release\\mips64\\compile_commands.json"
+}

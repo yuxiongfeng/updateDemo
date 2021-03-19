@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "F:\\workspace\\project\\update\\update\\tempConnector\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "F:\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\release\\arm64-v8a --target clean"
+  ],
+  "libraries": {
+    "tempconnector-Release-arm64-v8a": {
+      "artifactName": "tempconnector",
+      "buildCommand": "F:\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\release\\arm64-v8a --target tempconnector",
+      "abi": "arm64-v8a",
+      "output": "F:\\workspace\\project\\update\\update\\tempConnector\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a\\libtempconnector.so"
+    }
+  }
+}

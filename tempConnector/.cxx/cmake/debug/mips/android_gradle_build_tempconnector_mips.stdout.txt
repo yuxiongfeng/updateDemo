@@ -1,0 +1,2 @@
+[1/2] Building CXX object CMakeFiles/tempconnector.dir/JniHelper.cpp.o
+[2/2] Linking CXX shared library F:\workspace\project\update\update\tempConnector\build\intermediates\cmake\debug\obj\mips\libtempconnector.so

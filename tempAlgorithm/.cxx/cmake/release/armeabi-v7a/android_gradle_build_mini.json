@@ -1,0 +1,26 @@
+{
+  "buildFiles": [
+    "F:\\workspace\\project\\update\\update\\tempAlgorithm\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "F:\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\workspace\\project\\update\\update\\tempAlgorithm\\.cxx\\cmake\\release\\armeabi-v7a --target clean"
+  ],
+  "libraries": {
+    "tempalgorithm-Release-armeabi-v7a": {
+      "artifactName": "tempalgorithm",
+      "buildCommand": "F:\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\workspace\\project\\update\\update\\tempAlgorithm\\.cxx\\cmake\\release\\armeabi-v7a --target tempalgorithm",
+      "abi": "armeabi-v7a",
+      "output": "F:\\workspace\\project\\update\\update\\tempAlgorithm\\build\\intermediates\\cmake\\release\\obj\\armeabi-v7a\\libtempalgorithm.so"
+    },
+    "libtempalg1_0-Release-armeabi-v7a": {
+      "artifactName": "libtempalg1_0",
+      "abi": "armeabi-v7a",
+      "output": "F:\\workspace\\project\\update\\update\\tempAlgorithm\\libs\\armeabi-v7a\\libtempalg1_0.so"
+    },
+    "libtempalg1_5-Release-armeabi-v7a": {
+      "artifactName": "libtempalg1_5",
+      "abi": "armeabi-v7a",
+      "output": "F:\\workspace\\project\\update\\update\\tempAlgorithm\\libs\\armeabi-v7a\\libtempalg1_5.so"
+    }
+  }
+}

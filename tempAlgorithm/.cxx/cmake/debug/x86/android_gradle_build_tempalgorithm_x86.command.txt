@@ -1,0 +1,8 @@
+Executable : F:\sdk\cmake\3.6.4111459\bin\cmake.exe
+arguments : 
+--build
+F:\workspace\project\update\update\tempAlgorithm\.cxx\cmake\debug\x86
+--target
+tempalgorithm
+jvmArgs : 
+

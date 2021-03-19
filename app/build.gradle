@@ -1,0 +1,90 @@
+apply plugin: 'com.android.application'
+
+android {
+    useLibrary 'org.apache.http.legacy'
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
+    buildToolsVersion '28.0.3'
+    defaultConfig {
+        minSdkVersion rootProject.ext.android.minSdkVersion
+        targetSdkVersion rootProject.ext.android.targetSdkVersion
+        applicationId "com.proton.update"
+        versionCode 1
+        versionName "1.1.1"
+        multiDexEnabled true
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        vectorDrawables.useSupportLibrary = true
+    }
+    buildTypes {
+
+        release {
+            //Zip代码压缩优化
+            zipAlignEnabled true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "SERVER_PATH", '"http://www.protontek.com:80/vcare-api/"'
+            debuggable false
+            jniDebuggable false
+            renderscriptDebuggable false
+            ndk {
+                abiFilters 'armeabi'
+            }
+        }
+        debug {
+            //Zip代码压缩优化
+            zipAlignEnabled true
+            resValue("string", "PORT_NUMBER", "9999")
+
+            //测试服
+            buildConfigField "String", "SERVER_PATH", '"http://www.protontek.com/vcare-test/"'
+
+            //正式服
+//            buildConfigField "String", "SERVER_PATH", '"http://www.protontek.com:80/vcare-api/"'
+            minifyEnabled false
+            debuggable true
+            jniDebuggable true
+            renderscriptDebuggable true
+            ndk {
+                abiFilters 'armeabi', 'armeabi-v7a', 'arm64-v8a'
+            }
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    testImplementation 'junit:junit:4.12'
+    implementation "com.android.support:appcompat-v7:${rootProject.ext.android.supportLibrary}"
+    implementation "com.android.support:design:${rootProject.ext.android.supportLibrary}"
+    implementation "com.android.support:support-v4:${rootProject.ext.android.supportLibrary}"
+    implementation "com.android.support:cardview-v7:${rootProject.ext.android.supportLibrary}"
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.wms:update:1.0.5'
+//    implementation 'com.proton.temp:connector:1.2.8-alpha4'
+    implementation project(':tempConnector')
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'com.squareup.retrofit2:retrofit:2.4.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
+    implementation 'com.squareup.retrofit2:converter-scalars:2.4.0'
+    implementation 'com.squareup.okhttp3:okhttp:3.12.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:3.11.0'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.0.3'
+    implementation 'com.github.tbruyelle:rxpermissions:0.10.2'
+    implementation 'com.wms:wmsutils:1.1.4'
+    implementation 'com.aliyun.dpa:oss-android-sdk:2.9.2'
+    implementation 'org.litepal.android:core:2.0.0'
+    implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'com.wms:logger:1.0.1'
+}

@@ -1,0 +1,21 @@
+<resources>
+    <string name="app_name">UpdateDemo</string>
+    <string name="string_start_measure">开始测温</string>
+    <string name="string_device_name">卡帕奇体温贴</string>
+    <string name="string_click_use">无需升级</string>
+    <string name="string_click_update">点击升级</string>
+    <string name="string_updating_firware">正在更新固件</string>
+    <string name="string_update_starton">*请保持您的卡帕奇设备处于开机状态</string>
+    <string name="string_update_power">*请保持您的卡帕奇设备电量大于50%</string>
+    <string name="string_update_near_device">*请保持您的卡帕奇设备靠近您的手机</string>
+    <string name="string_please_keep_net_ok">*请保持您的网络情况良好</string>
+    <string name="string_warm_tips">温馨提示</string>
+    <string name="string_confirm">确定</string>
+    <string name="string_cancel">取消</string>
+    <string name="string_updating_exit_will_cause_problem">当前正在更新固件，强制退出可能会导致设备损坏，请慎重</string>
+    <string name="string_i_konw">我知道了</string>
+    <string name="string_update_firware">固件升级</string>
+    <string name="string_update_firware_fail">更新固件失败</string>
+    <string name="string_only_p03_set_net">仅旗舰版底座配网\n点击确认将开始配网</string>
+    <string name="string_retry">重试</string>
+</resources>

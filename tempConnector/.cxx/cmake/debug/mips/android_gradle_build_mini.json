@@ -1,0 +1,16 @@
+{
+  "buildFiles": [
+    "F:\\workspace\\project\\update\\update\\tempConnector\\src\\main\\cpp\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "F:\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\debug\\mips --target clean"
+  ],
+  "libraries": {
+    "tempconnector-Debug-mips": {
+      "artifactName": "tempconnector",
+      "buildCommand": "F:\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\workspace\\project\\update\\update\\tempConnector\\.cxx\\cmake\\debug\\mips --target tempconnector",
+      "abi": "mips",
+      "output": "F:\\workspace\\project\\update\\update\\tempConnector\\build\\intermediates\\cmake\\debug\\obj\\mips\\libtempconnector.so"
+    }
+  }
+}

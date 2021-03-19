@@ -1,0 +1,26 @@
+{
+  "buildFiles": [
+    "F:\\workspace\\project\\update\\update\\tempAlgorithm\\CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "F:\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\workspace\\project\\update\\update\\tempAlgorithm\\.cxx\\cmake\\release\\arm64-v8a --target clean"
+  ],
+  "libraries": {
+    "libtempalg1_0-Release-arm64-v8a": {
+      "artifactName": "libtempalg1_0",
+      "abi": "arm64-v8a",
+      "output": "F:\\workspace\\project\\update\\update\\tempAlgorithm\\libs\\arm64-v8a\\libtempalg1_0.so"
+    },
+    "libtempalg1_5-Release-arm64-v8a": {
+      "artifactName": "libtempalg1_5",
+      "abi": "arm64-v8a",
+      "output": "F:\\workspace\\project\\update\\update\\tempAlgorithm\\libs\\arm64-v8a\\libtempalg1_5.so"
+    },
+    "tempalgorithm-Release-arm64-v8a": {
+      "artifactName": "tempalgorithm",
+      "buildCommand": "F:\\sdk\\cmake\\3.6.4111459\\bin\\cmake.exe --build F:\\workspace\\project\\update\\update\\tempAlgorithm\\.cxx\\cmake\\release\\arm64-v8a --target tempalgorithm",
+      "abi": "arm64-v8a",
+      "output": "F:\\workspace\\project\\update\\update\\tempAlgorithm\\build\\intermediates\\cmake\\release\\obj\\arm64-v8a\\libtempalgorithm.so"
+    }
+  }
+}
