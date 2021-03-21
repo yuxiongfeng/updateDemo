@@ -18,6 +18,7 @@ import com.wms.ble.callback.OnSubscribeListener;
 import com.wms.ble.callback.OnWriteCharacterListener;
 import com.wms.ble.operator.FastBleOperator;
 import com.wms.ble.operator.IBleOperator;
+import com.wms.ble.operator.WmsBleOperator;
 import com.wms.ble.utils.BluetoothUtils;
 import com.wms.logger.Logger;
 
@@ -84,6 +85,11 @@ public class FirewareUpdateManager {
     private int newBlockSize;
     private Handler mHandler = new Handler(Looper.getMainLooper());
     private int writeDuration = 1000;
+
+    private boolean isFFC5Write01 = true;
+    private boolean isConfigRead = false;
+    private boolean isResetDevice = false;
+
     /**
      * 当前连接的设备mac地址
      */
@@ -126,7 +132,8 @@ public class FirewareUpdateManager {
     }
 
     private void scanDevice(final String mac) {
-        bleOperator = new FastBleOperator(mContext);
+//        bleOperator = new FastBleOperator(mContext);
+        bleOperator = new WmsBleOperator(mContext);
         bleOperator.setConnectListener(new OnConnectListener() {
 
             @Override
@@ -205,7 +212,7 @@ public class FirewareUpdateManager {
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        bleOperator.write(connectDeviceMac, SERVICE_UPDATE_FIRMWARE, CHARACTOR_UPDATE_WRITE, BleUtils.hexStringToBytes(identify), new OnWriteCharacterListener() {
+                        bleOperator.writeNoRsp(connectDeviceMac, SERVICE_UPDATE_FIRMWARE, CHARACTOR_UPDATE_WRITE, BleUtils.hexStringToBytes(identify), new OnWriteCharacterListener() {
                             @Override
                             public void onFail() {
                                 super.onFail();
@@ -238,7 +245,6 @@ public class FirewareUpdateManager {
         });
     }
 
-    private boolean isFFC5Write01 = true;
 
     private void subscribeFFC5() {
         //订阅ffc5
@@ -261,6 +267,11 @@ public class FirewareUpdateManager {
             @Override
             public void onNotify(String uuid, byte[] bytes) {
                 super.onNotify(uuid, bytes);
+                if (isResetDevice) {//升级成功
+                    Logger.w("升级成功，ffc5的04回调", BleUtils.bytesToHexString(bytes));
+                    updateSuccess(deviceType, connectDeviceMac);
+                    return;
+                }
                 if (isFFC5Write01) {
                     Logger.w("ffc5的01回调:", BleUtils.bytesToHexString(bytes));
                     //获取blockSize
@@ -272,10 +283,23 @@ public class FirewareUpdateManager {
                     writeToFFC5("03");
                 } else {
                     Logger.w("ffc5的03回调:", BleUtils.bytesToHexString(bytes));
-                    //向ffc2写升级固件
-                    //write(0, new byte[]{0, 0, 0, 0});
+                    if (!isConfigRead) {
+                        if (BleUtils.bytesToHexString(bytes).equalsIgnoreCase("120000000000")) {
+                            isConfigRead = true;
+                            //向ffc2写升级固件
+                            uploadData();
+                        }
+                    } else {
+                        String countString = BleUtils.bytesToHexString(bytes);
+                        int countLength = countString.length();
+                        Logger.w("countLength:", countLength);
+                        String blockSizeIndex = countString.substring(4, 12);
+                        Logger.w("blockSizeIndex:", blockSizeIndex);
+                        byte[] blockBytes = BleUtils.hexStringToBytes(blockSizeIndex);
+                        int blockIndex = Integer.parseInt(blockSizeIndex.substring(6, 8) + blockSizeIndex.substring(4, 6) + blockSizeIndex.substring(2, 4) + blockSizeIndex.substring(0, 2), 16);
+                        write(blockIndex, blockBytes);
+                    }
                 }
-
             }
         });
     }
@@ -284,7 +308,7 @@ public class FirewareUpdateManager {
         mHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                bleOperator.write(connectDeviceMac, SERVICE_UPDATE_FIRMWARE, CHARACTOR_BLOCKSIZE_CALLBACK, BleUtils.hexStringToBytes(instruction)
+                bleOperator.writeNoRsp(connectDeviceMac, SERVICE_UPDATE_FIRMWARE, CHARACTOR_BLOCKSIZE_CALLBACK, BleUtils.hexStringToBytes(instruction)
                         , new OnWriteCharacterListener() {
                             @Override
                             public void onFail() {
@@ -309,14 +333,18 @@ public class FirewareUpdateManager {
         bleOperator.subscribeNotification(connectDeviceMac, SERVICE_UPDATE_FIRMWARE, CHARACTOR_UPDATE_CALLBACK, new OnSubscribeListener() {
             @Override
             public void onSuccess() {
-                Logger.w("订阅成功");
+                Logger.w("ffc2订阅成功");
                 byte[] b = new byte[]{0, 0, 0, 0};
-                write(0, b);
+                if (isNewMode) {
+                    write(0, b);
+                } else {
+                    write(0, null);
+                }
             }
 
             @Override
             public void onFail() {
-                Logger.w("订阅失败");
+                Logger.w("ffc2订阅失败");
                 updateFail(getString(R.string.connector_fireware_write_fail), UpdateFailType.SUBSCRIBE_FAIL);
             }
 
@@ -374,7 +402,16 @@ public class FirewareUpdateManager {
         if (onFirewareUpdateListener != null) {
             onFirewareUpdateListener.onProgress(progress);
             if (index == mFileSize / buffSize - 1) {
-                onFirewareUpdateListener.onSuccess(deviceType, connectDeviceMac);
+                //向FFc5写入"04"重启设备
+                mHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        isResetDevice = true;
+                        Logger.w("ffc5开始写入04");
+                        writeToFFC5("04");
+                    }
+                }, 5000);
+                //onFirewareUpdateListener.onSuccess(deviceType, connectDeviceMac);
                 Logger.w("升级总耗时:", (System.currentTimeMillis() - startTime));
             }
         }
@@ -440,6 +477,7 @@ public class FirewareUpdateManager {
         try {
             if (mBluetoothReceive != null) {
                 mContext.unregisterReceiver(mBluetoothReceive);
+                mBluetoothReceive=null;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -448,11 +486,20 @@ public class FirewareUpdateManager {
             bleOperator.disConnect(macaddress);
             bleOperator.disConnect(UPDATE_MACADDRESS);
         }
+        isConfigRead = false;
+        isFFC5Write01 = true;
     }
 
     private void updateFail(String msg, UpdateFailType type) {
         if (onFirewareUpdateListener != null) {
             onFirewareUpdateListener.onFail(msg, type);
+        }
+        stopUpdate();
+    }
+
+    private void updateSuccess(DeviceType type, String macaddress) {
+        if (onFirewareUpdateListener != null) {
+            onFirewareUpdateListener.onSuccess(type, macaddress);
         }
         stopUpdate();
     }

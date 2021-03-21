@@ -1,8 +1,12 @@
 package com.wms.ble.operator;
 
+import android.app.Activity;
 import android.app.Application;
+import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothGatt;
+import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.Context;
+import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
 
@@ -23,19 +27,30 @@ import com.wms.ble.callback.OnSubscribeListener;
 import com.wms.ble.callback.OnUnSubscribeListener;
 import com.wms.ble.callback.OnWriteCharacterListener;
 import com.wms.ble.utils.Logger;
+import com.wms.ble.utils.Utils;
 
 import java.util.List;
+import java.util.UUID;
+
+//import cn.com.heaton.blelibrary.ble.Ble;
+//import cn.com.heaton.blelibrary.ble.callback.BleConnectCallback;
+//import cn.com.heaton.blelibrary.ble.callback.BleNotifyCallback;
+//import cn.com.heaton.blelibrary.ble.callback.BleReadCallback;
+//import cn.com.heaton.blelibrary.ble.callback.BleScanCallback;
+//import cn.com.heaton.blelibrary.ble.utils.ByteUtils;
 
 /**
  * Created by wangmengsi on 2017/10/26.
  */
 public class FastBleOperator implements IBleOperator {
     private OnConnectListener mConnectListener;
-    private BleManager mBleManager = BleManager.getInstance();
+   private BleManager mBleManager = BleManager.getInstance();
     private BleDevice mConnectDevice;
     private byte[] mConnectDeviceScanRecord;
+    private Context mContext;
 
     public FastBleOperator(Context context) {
+        mContext=context;
         mBleManager.init((Application) context);
         mBleManager
                 .setReConnectCount(1, 10000)
@@ -54,6 +69,47 @@ public class FastBleOperator implements IBleOperator {
 
     @Override
     public void connect(String mac) {
+       /* Ble.getInstance().connect(mac, new BleConnectCallback<cn.com.heaton.blelibrary.ble.model.BleDevice>() {
+            @Override
+            public void onConnectionChanged(cn.com.heaton.blelibrary.ble.model.BleDevice device) {
+                // 连接成功，BleDevice即为所连接的BLE设备
+                if (mConnectListener != null) {
+                    //mConnectListener.onConnectSuccess();
+//                    if (bleDevice.getScanRecord() == null) {
+//                        bleDevice.setScanRecord(mConnectDeviceScanRecord);
+//                    }
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        mConnectListener.onConnectSuccess(new ScanResult(device.getBleAddress(), device.getBleName(), device.getScanRecord().getBytes()));
+                    }
+                }
+            }
+
+            @Override
+            public void onConnectFailed(cn.com.heaton.blelibrary.ble.model.BleDevice device, int errorCode) {
+                super.onConnectFailed(device, errorCode);
+                // 连接失败
+                if (mConnectListener != null) {
+                    mConnectListener.onConnectFaild();
+                }
+            }
+
+            @Override
+            public void onConnectCancel(cn.com.heaton.blelibrary.ble.model.BleDevice device) {
+                super.onConnectCancel(device);
+            }
+
+            @Override
+            public void onReady(cn.com.heaton.blelibrary.ble.model.BleDevice device) {
+                super.onReady(device);
+            }
+
+            @Override
+            public void onServicesDiscovered(cn.com.heaton.blelibrary.ble.model.BleDevice device, BluetoothGatt gatt) {
+                super.onServicesDiscovered(device, gatt);
+            }
+        });*/
+
+
         mBleManager.connect(mac, new BleGattCallback() {
             @Override
             public void onStartConnect() {
@@ -94,6 +150,36 @@ public class FastBleOperator implements IBleOperator {
 
     @Override
     public void scanDevice(final OnScanListener listener, int scanTime, final String... name) {
+        /*Ble.getInstance().startScan(new BleScanCallback<cn.com.heaton.blelibrary.ble.model.BleDevice>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+                if (listener != null) {
+                    listener.onScanStart();
+                }
+            }
+
+            @Override
+            public void onLeScan(cn.com.heaton.blelibrary.ble.model.BleDevice device, int rssi, byte[] scanRecord) {
+                if (listener != null) {
+                    String mac;
+                    if (isBroadcast(scanRecord)) {
+                        mac = getMacaddressByBroadcastNew(scanRecord);
+                    } else {
+                        mac = getMacaddressByBroadcastOld(scanRecord);
+                    }
+                    listener.onDeviceFound(new ScanResult(mac, device.getBleName(), scanRecord));
+                }
+            }
+
+            @Override
+            public void onStop() {
+                super.onStop();
+                if (listener != null) {
+                    listener.onScanStopped();
+                }
+            }
+        });*/
         BleScanRuleConfig scanRuleConfig = new BleScanRuleConfig.Builder()
                 .setDeviceName(true, name)         // 只扫描指定广播名的设备，可选
                 .setScanTimeOut(scanTime)              // 扫描超时时间，可选，默认10秒；小于等于0表示不限制扫描时间
@@ -123,6 +209,34 @@ public class FastBleOperator implements IBleOperator {
         });
     }
 
+
+   /* public static boolean isBroadcast(byte[] scanRecord) {
+        if (scanRecord != null) {
+            String scanRecordHex = ByteUtils.bytes2HexStr(scanRecord);
+            return scanRecordHex != null && (scanRecordHex.startsWith("12ff") || scanRecordHex.startsWith("14ff"));
+        }
+        return false;
+    }
+
+    public static String getMacaddressByBroadcastNew(byte[] scanRecord) {
+        if (scanRecord.length < 7) {
+            return "";
+        }
+        byte[] macbytes = new byte[6];
+        System.arraycopy(scanRecord, 2, macbytes, 0, macbytes.length);
+        return Utils.parseBssid2Mac(ByteUtils.bytes2HexStr(macbytes)).toUpperCase();
+    }
+
+
+    public static String getMacaddressByBroadcastOld(byte[] scanRecord) {
+        if (scanRecord.length < 7) {
+            return "";
+        }
+        byte[] macbytes = new byte[6];
+        System.arraycopy(scanRecord, 4, macbytes, 0, macbytes.length);
+        return Utils.parseBssid2Mac(ByteUtils.bytes2HexStr(macbytes)).toUpperCase();
+    }*/
+
     @Override
     public void scanAndConnect(int scanTime, final String mac) {
         scanDevice(new OnScanListener() {
@@ -130,7 +244,7 @@ public class FastBleOperator implements IBleOperator {
 
             @Override
             public void onDeviceFound(final ScanResult result) {
-                if (mac.equalsIgnoreCase(result.getDevice().getAddress())) {
+                if (mac.equalsIgnoreCase(result.getMacaddress())) {
                     hasScanDevice = true;
                     stopScan();
                     new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
@@ -166,6 +280,27 @@ public class FastBleOperator implements IBleOperator {
 
     @Override
     public void read(String mac, String uuid_server, String uuid_charactor, final OnReadCharacterListener onReadCharacterListener) {
+      /*  UUID serviceUuid = UUID.fromString(uuid_server);
+        UUID characteristicUuid = UUID.fromString(uuid_charactor);
+        Ble.getInstance().readByUuid(Ble.getInstance().getBleDevice(mac), serviceUuid, characteristicUuid, new BleReadCallback<cn.com.heaton.blelibrary.ble.model.BleDevice>() {
+            @Override
+            public void onReadSuccess(cn.com.heaton.blelibrary.ble.model.BleDevice dedvice, BluetoothGattCharacteristic characteristic) {
+                super.onReadSuccess(dedvice, characteristic);
+                // 读特征值数据成功
+                if (onReadCharacterListener != null) {
+                    onReadCharacterListener.onSuccess(dedvice.getScanRecord().getBytes());
+                }
+            }
+
+            @Override
+            public void onReadFailed(cn.com.heaton.blelibrary.ble.model.BleDevice device, int failedCode) {
+                super.onReadFailed(device, failedCode);
+                // 读特征值数据失败
+                if (onReadCharacterListener != null) {
+                    onReadCharacterListener.onFail();
+                }
+            }
+        });*/
         mBleManager.read(mConnectDevice, uuid_server, uuid_charactor, new BleReadCallback() {
             @Override
             public void onReadSuccess(byte[] data) {
@@ -187,6 +322,26 @@ public class FastBleOperator implements IBleOperator {
 
     @Override
     public void write(String mac, String uuid_service, String uuid_charactor, byte[] value, final OnWriteCharacterListener onWriteCharacterListener) {
+       /* UUID serviceUuid = UUID.fromString(uuid_service);
+        UUID characteristicUuid = UUID.fromString(uuid_charactor);
+        Ble.getInstance().writeByUuid(Ble.getInstance().getBleDevice(mac), value, serviceUuid, characteristicUuid, new cn.com.heaton.blelibrary.ble.callback.BleWriteCallback<cn.com.heaton.blelibrary.ble.model.BleDevice>() {
+            @Override
+            public void onWriteSuccess(cn.com.heaton.blelibrary.ble.model.BleDevice device, BluetoothGattCharacteristic characteristic) {
+                // 发送数据到设备成功
+                if (onWriteCharacterListener != null) {
+                    onWriteCharacterListener.onSuccess();
+                }
+            }
+
+            @Override
+            public void onWriteFailed(cn.com.heaton.blelibrary.ble.model.BleDevice device, int failedCode) {
+                super.onWriteFailed(device, failedCode);
+                // 发送数据到设备失败
+                if (onWriteCharacterListener != null) {
+                    onWriteCharacterListener.onFail();
+                }
+            }
+        });*/
         mBleManager.write(mConnectDevice, uuid_service, uuid_charactor, value, new BleWriteCallback() {
             @Override
             public void onWriteSuccess(int current, int total, byte[] justWrite) {
@@ -208,6 +363,26 @@ public class FastBleOperator implements IBleOperator {
 
     @Override
     public void writeNoRsp(String mac, String uuid_service, String uuid_charactor, byte[] value, final OnWriteCharacterListener onWriteCharacterListener) {
+      /*  UUID serviceUuid = UUID.fromString(uuid_service);
+        UUID characteristicUuid = UUID.fromString(uuid_charactor);
+        Ble.getInstance().writeByUuid(Ble.getInstance().getBleDevice(mac), value, serviceUuid, characteristicUuid, new cn.com.heaton.blelibrary.ble.callback.BleWriteCallback<cn.com.heaton.blelibrary.ble.model.BleDevice>() {
+            @Override
+            public void onWriteSuccess(cn.com.heaton.blelibrary.ble.model.BleDevice device, BluetoothGattCharacteristic characteristic) {
+                // 发送数据到设备成功
+                if (onWriteCharacterListener != null) {
+                    onWriteCharacterListener.onSuccess();
+                }
+            }
+
+            @Override
+            public void onWriteFailed(cn.com.heaton.blelibrary.ble.model.BleDevice device, int failedCode) {
+                super.onWriteFailed(device, failedCode);
+                // 发送数据到设备失败
+                if (onWriteCharacterListener != null) {
+                    onWriteCharacterListener.onFail();
+                }
+            }
+        });*/
         mBleManager.write(mConnectDevice, uuid_service, uuid_charactor, value, new BleWriteCallback() {
             @Override
             public void onWriteSuccess(int current, int total, byte[] justWrite) {
@@ -235,38 +410,45 @@ public class FastBleOperator implements IBleOperator {
     @Override
     public void disConnect(String mac) {
         mBleManager.disconnect(mConnectDevice);
+       // Ble.getInstance().disconnect(Ble.getInstance().getBleDevice(mac));
         mConnectDevice = null;
         mConnectDeviceScanRecord = null;
     }
 
     @Override
     public boolean isConnected(String mac) {
+       // return Ble.getInstance().getBleDevice(mac).isConnected();
         return mBleManager.isConnected(mac);
     }
 
     @Override
     public void cancelConnect(String mac) {
         mBleManager.destroy();
+//        Ble.getInstance().disconnectAll();
     }
 
     @Override
     public void openBluetooth() {
         mBleManager.enableBluetooth();
+//        Ble.getInstance().turnOnBlueTooth((Activity) mContext);
     }
 
     @Override
     public void closeBluetooth() {
         mBleManager.disableBluetooth();
+//        Ble.getInstance().turnOffBlueTooth();
     }
 
     @Override
     public boolean isBluetoothOpened() {
         return mBleManager.isBlueEnable();
+//        return Ble.getInstance().isBleEnable();
     }
 
     @Override
     public boolean isSupportBle() {
         return mBleManager.isSupportBle();
+//        return Ble.getInstance().isSupportBle(mContext);
     }
 
     @Override
@@ -277,6 +459,35 @@ public class FastBleOperator implements IBleOperator {
     @Override
     public void subscribeNotification(String mac, final String uuid_service, final String uuid_charactor, final OnSubscribeListener listener) {
         if (mConnectDevice == null) return;
+       /* UUID serviceUuid = UUID.fromString(uuid_service);
+        UUID characteristicUuid = UUID.fromString(uuid_charactor);
+        Ble.getInstance().enableNotifyByUuid(Ble.getInstance().getBleDevice(mac), true, serviceUuid, characteristicUuid, new BleNotifyCallback<cn.com.heaton.blelibrary.ble.model.BleDevice>() {
+            @Override
+            public void onChanged(cn.com.heaton.blelibrary.ble.model.BleDevice device, BluetoothGattCharacteristic characteristic) {
+                // 打开通知后，设备发过来的数据将在这里出现
+                if (listener != null) {
+                    listener.onNotify(uuid_charactor, device.getScanRecord().getBytes());
+                }
+            }
+
+            @Override
+            public void onNotifyFailed(cn.com.heaton.blelibrary.ble.model.BleDevice device, int failedCode) {
+                super.onNotifyFailed(device, failedCode);
+                // 打开通知操作失败
+                if (listener != null) {
+                    listener.onFail();
+                }
+            }
+
+            @Override
+            public void onNotifySuccess(cn.com.heaton.blelibrary.ble.model.BleDevice device) {
+                super.onNotifySuccess(device);
+                // 打开通知操作成功
+                if (listener != null) {
+                    listener.onSuccess();
+                }
+            }
+        });*/
         mBleManager.notify(mConnectDevice, uuid_service, uuid_charactor, new BleNotifyCallback() {
             @Override
             public void onNotifySuccess() {
@@ -312,6 +523,7 @@ public class FastBleOperator implements IBleOperator {
     @Override
     public void unsubscribeNotification(String mac, String uuid_service, String uuid_charactor, OnUnSubscribeListener listener) {
         mBleManager.stopNotify(mConnectDevice, uuid_service, uuid_charactor);
+//        Ble.getInstance().enableNotify(Ble.getInstance().getBleDevice(mac),false,null);
         if (listener != null) {
             listener.onSuccess();
         }
@@ -319,6 +531,7 @@ public class FastBleOperator implements IBleOperator {
 
     @Override
     public void stopScan() {
+//        Ble.getInstance().stopScan();
         mBleManager.cancelScan();
     }
 

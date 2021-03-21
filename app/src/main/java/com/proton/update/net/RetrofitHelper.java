@@ -1,6 +1,5 @@
 package com.proton.update.net;
 
-import android.text.TextUtils;
 import android.util.Log;
 
 import com.proton.update.BuildConfig;
@@ -80,9 +79,7 @@ public class RetrofitHelper {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(client)
                 .build();
-
     }
-
 
     /**
      * @return 管理中心api
@@ -92,6 +89,5 @@ public class RetrofitHelper {
             managerCenterApi = create(ManagerCenterApi.class);
         return managerCenterApi;
     }
-
 
 }

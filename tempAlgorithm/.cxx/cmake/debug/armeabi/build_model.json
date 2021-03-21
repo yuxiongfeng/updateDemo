@@ -5,7 +5,6 @@
       "sdkFolder": "F:\\sdk",
       "isNativeCompilerSettingsCacheEnabled": false,
       "isBuildOnlyTargetAbiEnabled": true,
-      "ideBuildTargetAbi": "arm64-v8a,armeabi-v7a,armeabi",
       "splitsAbiFilterSet": [],
       "intermediatesFolder": "F:\\workspace\\project\\update\\update\\tempAlgorithm\\build\\intermediates",
       "gradleModulePathName": ":tempAlgorithm",
@@ -50,9 +49,11 @@
     "gradleBuildOutputFolder": "F:\\workspace\\project\\update\\update\\tempAlgorithm\\.cxx\\cxx\\debug",
     "isDebuggableEnabled": true,
     "validAbiList": [
-      "ARM64_V8A",
+      "ARMEABI",
       "ARMEABI_V7A",
-      "ARMEABI"
+      "ARM64_V8A",
+      "X86",
+      "X86_64"
     ],
     "buildTargetSet": []
   },

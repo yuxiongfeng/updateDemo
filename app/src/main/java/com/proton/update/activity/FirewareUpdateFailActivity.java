@@ -29,9 +29,10 @@ public class FirewareUpdateFailActivity extends BaseActivity<ActivityFirewareUpd
     protected void initView() {
         super.initView();
         if (deviceType != DeviceType.P02) {
-            binding.idIvUpdatePic.setImageResource(R.drawable.img_carepatch_simple);
+            if (binding.idIvUpdatePic!=null){
+                binding.idIvUpdatePic.setImageResource(R.drawable.img_carepatch_simple);
+            }
         }
-
         binding.idRetry.setOnClickListener(v -> {
             startActivity(new Intent(mContext, FirewareUpdatingActivity.class)
                     .putExtra("macaddress", macaddress)

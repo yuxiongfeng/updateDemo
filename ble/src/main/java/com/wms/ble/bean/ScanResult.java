@@ -19,6 +19,12 @@ public class ScanResult {
         this(device, -1, new byte[]{});
     }
 
+    public ScanResult(String address, String name, byte[] scanRecord) {
+        this.scanRecord = scanRecord;
+        this.macaddress = address;
+        this.name = name;
+    }
+
     public ScanResult(BluetoothDevice device, int rssi, byte[] scanRecord) {
         this.device = device;
         this.rssi = rssi;
