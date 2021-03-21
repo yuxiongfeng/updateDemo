@@ -21,5 +21,4 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.proton:bluetooth:1.0.5'
     implementation 'com.clj.fastble:FastBleLib:2.3.2'
-    api project(':core')
 }

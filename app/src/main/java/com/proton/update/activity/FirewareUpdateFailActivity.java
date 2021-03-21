@@ -1,6 +1,7 @@
 package com.proton.update.activity;
 
 import android.content.Intent;
+
 import com.proton.temp.connector.bean.DeviceType;
 import com.proton.update.R;
 import com.proton.update.databinding.ActivityFirewareUpdateFailBinding;
@@ -28,11 +29,6 @@ public class FirewareUpdateFailActivity extends BaseActivity<ActivityFirewareUpd
     @Override
     protected void initView() {
         super.initView();
-        if (deviceType != DeviceType.P02) {
-            if (binding.idIvUpdatePic!=null){
-                binding.idIvUpdatePic.setImageResource(R.drawable.img_carepatch_simple);
-            }
-        }
         binding.idRetry.setOnClickListener(v -> {
             startActivity(new Intent(mContext, FirewareUpdatingActivity.class)
                     .putExtra("macaddress", macaddress)

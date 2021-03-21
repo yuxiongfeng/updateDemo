@@ -291,13 +291,19 @@ public class FirewareUpdateManager {
                         }
                     } else {
                         String countString = BleUtils.bytesToHexString(bytes);
-                        int countLength = countString.length();
-                        Logger.w("countLength:", countLength);
                         String blockSizeIndex = countString.substring(4, 12);
                         Logger.w("blockSizeIndex:", blockSizeIndex);
                         byte[] blockBytes = BleUtils.hexStringToBytes(blockSizeIndex);
                         int blockIndex = Integer.parseInt(blockSizeIndex.substring(6, 8) + blockSizeIndex.substring(4, 6) + blockSizeIndex.substring(2, 4) + blockSizeIndex.substring(0, 2), 16);
-                        write(blockIndex, blockBytes);
+                        if (blockIndex==0) {//写入完成
+                            isResetDevice=true;
+                            Logger.w("写入完成");
+                            isResetDevice = true;
+                            Logger.w("ffc5开始写入04");
+                            writeToFFC5("04");
+                        }else{
+                            write(blockIndex, blockBytes);
+                        }
                     }
                 }
             }
@@ -371,8 +377,15 @@ public class FirewareUpdateManager {
         }
         Logger.w("buffSize is :", buffSize);
         final float progress = (float) index * buffSize / mFileSize;
-        byte[] temp = new byte[buffSize];
-        System.arraycopy(mFileBytes, buffSize * index, temp, 0, buffSize);
+        byte[] temp;
+        if (buffSize * index + buffSize < mFileBytes.length) {
+            temp = new byte[buffSize];
+            System.arraycopy(mFileBytes, buffSize * index, temp, 0, buffSize);
+        } else {
+            Logger.w("最后一包数据不足",buffSize);
+            temp = new byte[mFileBytes.length - buffSize * index];
+            System.arraycopy(mFileBytes, buffSize * index, temp, 0, mFileBytes.length - buffSize * index);
+        }
         byte[] writeData;
         if (data != null) {
             writeData = new byte[data.length + temp.length];
@@ -401,8 +414,25 @@ public class FirewareUpdateManager {
         //这个回调不放到写入成功是因为有时候会出现最后一包不回调导致提示升级失败
         if (onFirewareUpdateListener != null) {
             onFirewareUpdateListener.onProgress(progress);
-            if (index == mFileSize / buffSize - 1) {
-                //向FFc5写入"04"重启设备
+            if (mFileSize % buffSize == 0) {
+                Logger.w("fileSize能够被16整除");
+                if (index == mFileSize / buffSize - 1) {
+
+                    if (mFileSize % buffSize == 0) {
+                        //向FFc5写入"04"重启设备
+                        mHandler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                isResetDevice = true;
+                                Logger.w("ffc5开始写入04");
+                                writeToFFC5("04");
+                            }
+                        }, 5000);
+                    }
+                    Logger.w("升级总耗时:", (System.currentTimeMillis() - startTime));
+                }
+            } else if (index > (mFileSize / buffSize - 1)) {
+                Logger.w("fileSize不能够被16整除");
                 mHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -411,8 +441,6 @@ public class FirewareUpdateManager {
                         writeToFFC5("04");
                     }
                 }, 5000);
-                //onFirewareUpdateListener.onSuccess(deviceType, connectDeviceMac);
-                Logger.w("升级总耗时:", (System.currentTimeMillis() - startTime));
             }
         }
     }
@@ -477,7 +505,7 @@ public class FirewareUpdateManager {
         try {
             if (mBluetoothReceive != null) {
                 mContext.unregisterReceiver(mBluetoothReceive);
-                mBluetoothReceive=null;
+                mBluetoothReceive = null;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -486,8 +514,9 @@ public class FirewareUpdateManager {
             bleOperator.disConnect(macaddress);
             bleOperator.disConnect(UPDATE_MACADDRESS);
         }
-        isConfigRead = false;
         isFFC5Write01 = true;
+        isConfigRead = false;
+        isResetDevice=false;
     }
 
     private void updateFail(String msg, UpdateFailType type) {

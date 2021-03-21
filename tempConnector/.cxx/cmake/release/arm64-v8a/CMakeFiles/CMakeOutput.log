@@ -3,17 +3,17 @@ The host system is: Windows - 10.0.19042 - AMD64
 Determining if the C compiler works passed with the following output:
 Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_4e246"
-[1/2] Building C object CMakeFiles/cmTC_4e246.dir/testCCompiler.c.o
-[2/2] Linking C executable cmTC_4e246
+Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_a5402"
+[1/2] Building C object CMakeFiles/cmTC_a5402.dir/testCCompiler.c.o
+[2/2] Linking C executable cmTC_a5402
 
 
 Detecting C compiler ABI info compiled with the following output:
 Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_38b49"
-[1/2] Building C object CMakeFiles/cmTC_38b49.dir/CMakeCCompilerABI.c.o
-[2/2] Linking C executable cmTC_38b49
+Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_44dcb"
+[1/2] Building C object CMakeFiles/cmTC_44dcb.dir/CMakeCCompilerABI.c.o
+[2/2] Linking C executable cmTC_44dcb
 Android clang version 5.0.300080  (based on LLVM 5.0.300080)
 Target: aarch64-none-linux-android
 Thread model: posix
@@ -22,16 +22,16 @@ Found candidate GCC installation: F:/sdk/android-ndk-r15c/toolchains/aarch64-lin
 Selected GCC installation: F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x
 Candidate multilib: .;@m64
 Selected multilib: .;@m64
- "F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin\\ld" --sysroot=F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64 -pie --fix-cortex-a53-843419 --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_38b49 "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtbegin_dynamic.o" "-LF:\\sdk\\android-ndk-r15c\\toolchains\\llvm\\prebuilt\\windows-x86_64\\lib64\\clang\\5.0.300080\\lib\\linux\\aarch64" -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -LF:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_38b49.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtend_android.o"
+ "F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin\\ld" --sysroot=F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64 -pie --fix-cortex-a53-843419 --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_44dcb "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtbegin_dynamic.o" "-LF:\\sdk\\android-ndk-r15c\\toolchains\\llvm\\prebuilt\\windows-x86_64\\lib64\\clang\\5.0.300080\\lib\\linux\\aarch64" -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -LF:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_44dcb.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtend_android.o"
 
 
 Parsed C implicit link information from above output:
   link line regex: [^( *|.*[/\])(aarch64-linux-android-ld\.exe|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_38b49"]
-  ignore line: [[1/2] Building C object CMakeFiles/cmTC_38b49.dir/CMakeCCompilerABI.c.o]
-  ignore line: [[2/2] Linking C executable cmTC_38b49]
+  ignore line: [Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_44dcb"]
+  ignore line: [[1/2] Building C object CMakeFiles/cmTC_44dcb.dir/CMakeCCompilerABI.c.o]
+  ignore line: [[2/2] Linking C executable cmTC_44dcb]
   ignore line: [Android clang version 5.0.300080  (based on LLVM 5.0.300080)]
   ignore line: [Target: aarch64-none-linux-android]
   ignore line: [Thread model: posix]
@@ -42,7 +42,7 @@ Parsed C implicit link information from above output:
   ignore line: [@m64]
   ignore line: [Selected multilib: .]
   ignore line: [@m64]
-  link line: [ "F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin\\ld" --sysroot=F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64 -pie --fix-cortex-a53-843419 --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_38b49 "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtbegin_dynamic.o" "-LF:\\sdk\\android-ndk-r15c\\toolchains\\llvm\\prebuilt\\windows-x86_64\\lib64\\clang\\5.0.300080\\lib\\linux\\aarch64" -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -LF:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_38b49.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtend_android.o"]
+  link line: [ "F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin\\ld" --sysroot=F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64 -pie --fix-cortex-a53-843419 --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_44dcb "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtbegin_dynamic.o" "-LF:\\sdk\\android-ndk-r15c\\toolchains\\llvm\\prebuilt\\windows-x86_64\\lib64\\clang\\5.0.300080\\lib\\linux\\aarch64" -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -LF:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_44dcb.dir/CMakeCCompilerABI.c.o -lgcc -ldl -lc -lgcc -ldl "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtend_android.o"]
     arg [F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin\ld] ==> ignore
     arg [--sysroot=F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64] ==> ignore
     arg [-pie] ==> ignore
@@ -53,7 +53,7 @@ Parsed C implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/system/bin/linker64] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_38b49] ==> ignore
+    arg [cmTC_44dcb] ==> ignore
     arg [F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\crtbegin_dynamic.o] ==> ignore
     arg [-LF:\sdk\android-ndk-r15c\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\5.0.300080\lib\linux\aarch64] ==> dir [F:\sdk\android-ndk-r15c\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\5.0.300080\lib\linux\aarch64]
     arg [-LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x] ==> dir [F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
@@ -71,7 +71,7 @@ Parsed C implicit link information from above output:
     arg [-znow] ==> ignore
     arg [--gc-sections] ==> ignore
     arg [-znocopyreloc] ==> ignore
-    arg [CMakeFiles/cmTC_38b49.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [CMakeFiles/cmTC_44dcb.dir/CMakeCCompilerABI.c.o] ==> ignore
     arg [-lgcc] ==> lib [gcc]
     arg [-ldl] ==> lib [dl]
     arg [-lc] ==> lib [c]
@@ -95,9 +95,9 @@ Parsed C implicit link information from above output:
 Detecting C [-std=c11] compiler features compiled with the following output:
 Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_592da"
-[1/2] Building C object CMakeFiles/cmTC_592da.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_592da
+Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_e98f6"
+[1/2] Building C object CMakeFiles/cmTC_e98f6.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_e98f6
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -109,9 +109,9 @@ Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_592da"
 Detecting C [-std=c99] compiler features compiled with the following output:
 Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_5c976"
-[1/2] Building C object CMakeFiles/cmTC_5c976.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_5c976
+Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_88387"
+[1/2] Building C object CMakeFiles/cmTC_88387.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_88387
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -123,9 +123,9 @@ Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_5c976"
 Detecting C [-std=c90] compiler features compiled with the following output:
 Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_8a511"
-[1/2] Building C object CMakeFiles/cmTC_8a511.dir/feature_tests.c.o
-[2/2] Linking C executable cmTC_8a511
+Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_a0fae"
+[1/2] Building C object CMakeFiles/cmTC_a0fae.dir/feature_tests.c.o
+[2/2] Linking C executable cmTC_a0fae
 
 
     Feature record: C_FEATURE:1c_function_prototypes
@@ -135,17 +135,17 @@ Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_8a511"
 Determining if the CXX compiler works passed with the following output:
 Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_565b3"
-[1/2] Building CXX object CMakeFiles/cmTC_565b3.dir/testCXXCompiler.cxx.o
-[2/2] Linking CXX executable cmTC_565b3
+Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_e4e2d"
+[1/2] Building CXX object CMakeFiles/cmTC_e4e2d.dir/testCXXCompiler.cxx.o
+[2/2] Linking CXX executable cmTC_e4e2d
 
 
 Detecting CXX compiler ABI info compiled with the following output:
 Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_b7a17"
-[1/2] Building CXX object CMakeFiles/cmTC_b7a17.dir/CMakeCXXCompilerABI.cpp.o
-[2/2] Linking CXX executable cmTC_b7a17
+Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_01ac2"
+[1/2] Building CXX object CMakeFiles/cmTC_01ac2.dir/CMakeCXXCompilerABI.cpp.o
+[2/2] Linking CXX executable cmTC_01ac2
 Android clang version 5.0.300080  (based on LLVM 5.0.300080)
 Target: aarch64-none-linux-android
 Thread model: posix
@@ -154,16 +154,16 @@ Found candidate GCC installation: F:/sdk/android-ndk-r15c/toolchains/aarch64-lin
 Selected GCC installation: F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x
 Candidate multilib: .;@m64
 Selected multilib: .;@m64
- "F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin\\ld" --sysroot=F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64 -pie --fix-cortex-a53-843419 --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_b7a17 "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtbegin_dynamic.o" "-LF:\\sdk\\android-ndk-r15c\\toolchains\\llvm\\prebuilt\\windows-x86_64\\lib64\\clang\\5.0.300080\\lib\\linux\\aarch64" -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -LF:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_b7a17.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtend_android.o"
+ "F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin\\ld" --sysroot=F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64 -pie --fix-cortex-a53-843419 --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_01ac2 "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtbegin_dynamic.o" "-LF:\\sdk\\android-ndk-r15c\\toolchains\\llvm\\prebuilt\\windows-x86_64\\lib64\\clang\\5.0.300080\\lib\\linux\\aarch64" -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -LF:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_01ac2.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtend_android.o"
 
 
 Parsed CXX implicit link information from above output:
   link line regex: [^( *|.*[/\])(aarch64-linux-android-ld\.exe|([^/\]+-)?ld|collect2)[^/\]*( |$)]
   ignore line: [Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp]
   ignore line: []
-  ignore line: [Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_b7a17"]
-  ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_b7a17.dir/CMakeCXXCompilerABI.cpp.o]
-  ignore line: [[2/2] Linking CXX executable cmTC_b7a17]
+  ignore line: [Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_01ac2"]
+  ignore line: [[1/2] Building CXX object CMakeFiles/cmTC_01ac2.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [[2/2] Linking CXX executable cmTC_01ac2]
   ignore line: [Android clang version 5.0.300080  (based on LLVM 5.0.300080)]
   ignore line: [Target: aarch64-none-linux-android]
   ignore line: [Thread model: posix]
@@ -174,7 +174,7 @@ Parsed CXX implicit link information from above output:
   ignore line: [@m64]
   ignore line: [Selected multilib: .]
   ignore line: [@m64]
-  link line: [ "F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin\\ld" --sysroot=F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64 -pie --fix-cortex-a53-843419 --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_b7a17 "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtbegin_dynamic.o" "-LF:\\sdk\\android-ndk-r15c\\toolchains\\llvm\\prebuilt\\windows-x86_64\\lib64\\clang\\5.0.300080\\lib\\linux\\aarch64" -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -LF:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_b7a17.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtend_android.o"]
+  link line: [ "F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin\\ld" --sysroot=F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64 -pie --fix-cortex-a53-843419 --eh-frame-hdr -m aarch64linux -dynamic-linker /system/bin/linker64 -o cmTC_01ac2 "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtbegin_dynamic.o" "-LF:\\sdk\\android-ndk-r15c\\toolchains\\llvm\\prebuilt\\windows-x86_64\\lib64\\clang\\5.0.300080\\lib\\linux\\aarch64" -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib/../lib64 -LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/lib -LF:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib --exclude-libs libgcc.a --build-id --warn-shared-textrel --fatal-warnings --no-undefined -z noexecstack -z relro -z now --gc-sections -z nocopyreloc CMakeFiles/cmTC_01ac2.dir/CMakeCXXCompilerABI.cpp.o -lstdc++ -lm -lgcc -lgcc -ldl -lc -lgcc -lgcc -ldl "F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\\crtend_android.o"]
     arg [F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x/../../../../aarch64-linux-android/bin\ld] ==> ignore
     arg [--sysroot=F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64] ==> ignore
     arg [-pie] ==> ignore
@@ -185,7 +185,7 @@ Parsed CXX implicit link information from above output:
     arg [-dynamic-linker] ==> ignore
     arg [/system/bin/linker64] ==> ignore
     arg [-o] ==> ignore
-    arg [cmTC_b7a17] ==> ignore
+    arg [cmTC_01ac2] ==> ignore
     arg [F:/sdk/android-ndk-r15c/platforms/android-21/arch-arm64/usr/lib\crtbegin_dynamic.o] ==> ignore
     arg [-LF:\sdk\android-ndk-r15c\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\5.0.300080\lib\linux\aarch64] ==> dir [F:\sdk\android-ndk-r15c\toolchains\llvm\prebuilt\windows-x86_64\lib64\clang\5.0.300080\lib\linux\aarch64]
     arg [-LF:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x] ==> dir [F:/sdk/android-ndk-r15c/toolchains/aarch64-linux-android-4.9/prebuilt/windows-x86_64/lib/gcc/aarch64-linux-android/4.9.x]
@@ -203,7 +203,7 @@ Parsed CXX implicit link information from above output:
     arg [-znow] ==> ignore
     arg [--gc-sections] ==> ignore
     arg [-znocopyreloc] ==> ignore
-    arg [CMakeFiles/cmTC_b7a17.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [CMakeFiles/cmTC_01ac2.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
     arg [-lstdc++] ==> lib [stdc++]
     arg [-lm] ==> lib [m]
     arg [-lgcc] ==> lib [gcc]
@@ -233,9 +233,9 @@ Parsed CXX implicit link information from above output:
 Detecting CXX [-std=c++14] compiler features compiled with the following output:
 Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_b372d"
-[1/2] Building CXX object CMakeFiles/cmTC_b372d.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_b372d
+Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_0d650"
+[1/2] Building CXX object CMakeFiles/cmTC_0d650.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_0d650
 
 
     Feature record: CXX_FEATURE:1cxx_aggregate_default_initializers
@@ -300,9 +300,9 @@ Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_b372d"
 Detecting CXX [-std=c++11] compiler features compiled with the following output:
 Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_2ec7f"
-[1/2] Building CXX object CMakeFiles/cmTC_2ec7f.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_2ec7f
+Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_eaab8"
+[1/2] Building CXX object CMakeFiles/cmTC_eaab8.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_eaab8
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers
@@ -367,9 +367,9 @@ Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_2ec7f"
 Detecting CXX [-std=c++98] compiler features compiled with the following output:
 Change Dir: F:/workspace/project/update/update/tempConnector/.cxx/cmake/release/arm64-v8a/CMakeFiles/CMakeTmp
 
-Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_2eb70"
-[1/2] Building CXX object CMakeFiles/cmTC_2eb70.dir/feature_tests.cxx.o
-[2/2] Linking CXX executable cmTC_2eb70
+Run Build Command:"F:\sdk\cmake\3.6.4111459\bin\ninja.exe" "cmTC_78bb0"
+[1/2] Building CXX object CMakeFiles/cmTC_78bb0.dir/feature_tests.cxx.o
+[2/2] Linking CXX executable cmTC_78bb0
 
 
     Feature record: CXX_FEATURE:0cxx_aggregate_default_initializers

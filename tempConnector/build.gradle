@@ -48,5 +48,4 @@ dependencies {
     implementation project(':tempAlgorithm')
     implementation 'com.wms:logger:1.0.1'
     api project(':ble')
-   // api project(':core')
 }

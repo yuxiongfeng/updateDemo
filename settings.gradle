@@ -1,1 +1,1 @@
-include ':app', ':tempConnector', ':tempAlgorithm', ':ble', ':core'
+include ':app', ':tempConnector', ':tempAlgorithm', ':ble'
