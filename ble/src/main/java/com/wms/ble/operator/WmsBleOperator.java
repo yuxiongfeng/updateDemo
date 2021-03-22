@@ -259,6 +259,7 @@ public class WmsBleOperator implements IBleOperator {
     @Override
     public void disConnect(String mac) {
         mClient.disconnect(mac);
+        mClient.unregisterConnectStatusListener(mac, mConnectStateListener);
     }
 
     @Override

@@ -86,6 +86,7 @@
                     android:textSize="14sp"
                     app:normalStrokeColor="@color/color_main"
                     app:normalStrokeWidth="1dp"
+                    android:visibility="gone"
                     app:round="true"/>
 
             </LinearLayout>

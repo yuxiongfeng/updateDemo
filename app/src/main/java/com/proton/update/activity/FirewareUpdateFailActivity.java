@@ -29,12 +29,14 @@ public class FirewareUpdateFailActivity extends BaseActivity<ActivityFirewareUpd
     @Override
     protected void initView() {
         super.initView();
-        binding.idRetry.setOnClickListener(v -> {
-            startActivity(new Intent(mContext, FirewareUpdatingActivity.class)
-                    .putExtra("macaddress", macaddress)
-                    .putExtra("deviceType", deviceType));
-            finish();
-        });
+        if (binding!=null) {
+            binding.idRetry.setOnClickListener(v -> {
+                startActivity(new Intent(mContext, FirewareUpdatingActivity.class)
+                        .putExtra("macaddress", macaddress)
+                        .putExtra("deviceType", deviceType));
+                finish();
+            });
+        }
     }
 
     @Override
