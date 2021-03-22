@@ -16,7 +16,6 @@ import com.wms.ble.bean.ScanResult;
 import com.wms.ble.callback.OnConnectListener;
 import com.wms.ble.callback.OnSubscribeListener;
 import com.wms.ble.callback.OnWriteCharacterListener;
-import com.wms.ble.operator.FastBleOperator;
 import com.wms.ble.operator.IBleOperator;
 import com.wms.ble.operator.WmsBleOperator;
 import com.wms.ble.utils.BluetoothUtils;
@@ -30,7 +29,7 @@ import java.io.IOException;
 
 /**
  * Created by 王梦思 on 2018-11-06.
- * <p/>
+ * <p/>重置成功
  */
 public class FirewareUpdateManager {
 
@@ -124,6 +123,7 @@ public class FirewareUpdateManager {
             BluetoothUtils.openBluetooth();
             return this;
         }
+        //注册检测蓝牙的广播
         IntentFilter filter = new IntentFilter();
         filter.addAction(BluetoothAdapter.ACTION_STATE_CHANGED);
         mContext.registerReceiver(mBluetoothReceive, filter);
@@ -175,6 +175,7 @@ public class FirewareUpdateManager {
             public void onConnectFaild() {
                 Logger.w("固件升级:连接失败:", mac);
                 if (mac.equals(UPDATE_MACADDRESS)) {
+                    Logger.w("oad模式下连接失败，提示连接失败");
                     updateFail(getString(R.string.connector_connect_fail), UpdateFailType.CONNECT_FAIL);
                 } else {
                     scanDevice(UPDATE_MACADDRESS);
@@ -295,13 +296,13 @@ public class FirewareUpdateManager {
                         Logger.w("blockSizeIndex:", blockSizeIndex);
                         byte[] blockBytes = BleUtils.hexStringToBytes(blockSizeIndex);
                         int blockIndex = Integer.parseInt(blockSizeIndex.substring(6, 8) + blockSizeIndex.substring(4, 6) + blockSizeIndex.substring(2, 4) + blockSizeIndex.substring(0, 2), 16);
-                        if (blockIndex==0) {//写入完成
-                            isResetDevice=true;
+                        if (blockIndex == 0) {//写入完成
+                            isResetDevice = true;
                             Logger.w("写入完成");
                             isResetDevice = true;
                             Logger.w("ffc5开始写入04");
                             writeToFFC5("04");
-                        }else{
+                        } else {
                             write(blockIndex, blockBytes);
                         }
                     }
@@ -382,7 +383,7 @@ public class FirewareUpdateManager {
             temp = new byte[buffSize];
             System.arraycopy(mFileBytes, buffSize * index, temp, 0, buffSize);
         } else {
-            Logger.w("最后一包数据不足",buffSize);
+            Logger.w("最后一包数据不足", buffSize);
             temp = new byte[mFileBytes.length - buffSize * index];
             System.arraycopy(mFileBytes, buffSize * index, temp, 0, mFileBytes.length - buffSize * index);
         }
@@ -502,6 +503,7 @@ public class FirewareUpdateManager {
     }
 
     public void stopUpdate() {
+        Logger.w("----->stopUpdate()");
         try {
             if (mBluetoothReceive != null) {
                 mContext.unregisterReceiver(mBluetoothReceive);
@@ -513,24 +515,29 @@ public class FirewareUpdateManager {
         if (bleOperator != null) {
             bleOperator.disConnect(macaddress);
             bleOperator.disConnect(UPDATE_MACADDRESS);
+            bleOperator = null;
         }
+        //重置升级相关变量
         isFFC5Write01 = true;
         isConfigRead = false;
-        isResetDevice=false;
+        isResetDevice = false;
     }
 
     private void updateFail(String msg, UpdateFailType type) {
+        Logger.w("------->updateFail()");
+        stopUpdate();
         if (onFirewareUpdateListener != null) {
             onFirewareUpdateListener.onFail(msg, type);
         }
-        stopUpdate();
+
     }
 
     private void updateSuccess(DeviceType type, String macaddress) {
+        Logger.w("------->updateSuccess()");
+        stopUpdate();
         if (onFirewareUpdateListener != null) {
             onFirewareUpdateListener.onSuccess(type, macaddress);
         }
-        stopUpdate();
     }
 
     public void setOnFirewareUpdateListener(OnFirewareUpdateListener onFirewareUpdateListener) {
